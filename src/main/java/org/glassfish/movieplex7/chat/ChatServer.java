@@ -26,24 +26,24 @@ import javax.websocket.server.ServerEndpoint;
 public class ChatServer {
 
     private static final Logger LOG = Logger.getLogger(ChatServer.class.getName());
-    private static final List<Session> clientes = Collections.synchronizedList(new ArrayList<Session>());
+    private static final List<Session> CLIENTES = Collections.synchronizedList(new ArrayList<Session>());
 
     @OnOpen
     public void onOpen(Session cliente) {
         LOG.log(Level.INFO, "[ServerEndpoint][ChatServer][onOpen]");
-        clientes.add(cliente);
+        CLIENTES.add(cliente);
     }
 
     @OnClose
     public void onClose(Session cliente) {
         LOG.log(Level.INFO, "[ServerEndpoint][ChatServer][onClose]");
-        clientes.remove(cliente);
+        CLIENTES.remove(cliente);
     }
 
     @OnMessage
     public void onMessage(String mensaje, Session cliente) {
         LOG.log(Level.INFO, "[ServerEndpoint][ChatServer][onMessage] -> {0}", mensaje);
-        clientes.stream().forEach(peer -> {
+        CLIENTES.stream().forEach(peer -> {
             try {
                 peer.getBasicRemote().sendObject(mensaje);
             } catch (IOException | EncodeException ex) {

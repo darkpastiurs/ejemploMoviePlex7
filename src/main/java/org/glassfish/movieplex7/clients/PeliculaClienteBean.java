@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.glassfish.movieplex7.clientes;
+package org.glassfish.movieplex7.clients;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -13,8 +13,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import org.glassfish.movieplex7.entities.Movie;
+import org.glassfish.movieplex7.json.PeliculaEscritor;
 
 /**
  *
@@ -51,5 +54,13 @@ public class PeliculaClienteBean {
     
     public void eliminarPelicula(){
         webObjetivo.path("{peliculaId}").resolveTemplate("peliculaId", peliculaApoyoBean.getPeliculaId()).request().delete();
+    }
+    
+    public void registrarPelicula(){
+        Movie pelicula = new Movie();
+        pelicula.setId(peliculaApoyoBean.getPeliculaId());
+        pelicula.setName(peliculaApoyoBean.getPeliculaNombre());
+        pelicula.setActors(peliculaApoyoBean.getPeliculaActores());
+        webObjetivo.register(PeliculaEscritor.class).request().post(Entity.entity(pelicula, MediaType.APPLICATION_JSON));
     }
 }

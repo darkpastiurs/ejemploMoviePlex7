@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/template.xhtml">
+
+            <ui:define name="content">
+                <h1>Puntos</h1>
+                <h:form>
+                    Tama&#241;o de Queue:
+                    <h:outputText value="#{receptorPuntosBean.queueSize}" />
+                    <p/>
+                    <h:inputText value="#{emisorPuntosBean.mensaje}" />
+                    
+                    <h:commandButton value="Enviar mensaje" action="puntos" actionListener="#{emisorPuntosBean.sendMessage()}"/>
+                </h:form>
+                
+                <h:form>
+                    <h:commandButton value="Recibir mensaje" action="puntos" actionListener="#{receptorPuntosBean.receiveMessage()}" />
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

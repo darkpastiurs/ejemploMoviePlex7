@@ -17,8 +17,13 @@
                             <f:selectItem itemValue="#{p.id}" itemLabel="#{p.name}" />
                         </c:forEach>
                     </h:selectOneRadio>
-                    <h:commandButton value="Ver detalles" action="peliculaDetalles" />
-                    <h:commandButton value="Eliminar" action="peliculas" actionListener="#{peliculaCliente.eliminarPelicula()}" />
+                    <table cellspacing="5">
+                        <tr>
+                            <td><h:commandButton value="Ver detalles" action="peliculaDetalles" /></td>
+                            <td><h:commandButton value="Registrar nueva" action="addPelicula" /></td>
+                            <td><h:commandButton value="Eliminar" action="peliculas" actionListener="#{peliculaCliente.eliminarPelicula()}" /></td>
+                        </tr>
+                    </table>
                 </h:form>
             </ui:define>
 

@@ -6,13 +6,14 @@
         -->
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
+    <validation-mode>NONE</validation-mode>
     <properties>
       <!--<property name="javax.persistence.schema-generation.create-source" value="script"/>
       <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/create.sql"/>
       <property name="javax.persistence.sql-load-script-source" value="META-INF/load.sql"/>-->
       <property name="eclipselink.deploy-on-startup" value="true"/>
       <property name="eclipselink.logging.exceptions" value="false"/>
-      <!--<property name="eclipselink.logging.level" value="FINE"/>-->
+      <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
   <!--<persistence-unit name="persistence" transaction-type="JTA">
