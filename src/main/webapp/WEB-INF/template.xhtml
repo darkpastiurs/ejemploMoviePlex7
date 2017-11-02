@@ -76,7 +76,14 @@
                 <ui:insert name="left">
                     <h:form>
                         <h:commandLink action="reservas">Reservar asiento</h:commandLink>
-                        <p/><h:outputLink value="item2.xhtml">Item 2</h:outputLink>
+                        <p/>
+                        <h:outputLink value="${facesContext.externalContext.requestContextPath}/faces/chat/chat.xhtml">
+                            Sala de chat
+                        </h:outputLink>
+                        <p/>
+                        <h:outputLink value="${facesContext.externalContext.requestContextPath}/faces/clientes/peliculas.xhtml">
+                            Peliculas
+                        </h:outputLink>
                     </h:form>
                 </ui:insert>
             </div>

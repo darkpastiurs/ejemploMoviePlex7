@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/template.xhtml">
+
+            <ui:define name="content">
+                <form onsubmit="return false;">
+                    <table>
+                        <tr>
+                            <td>
+                                Mensajes de chat<br/>
+                                <textarea readonly="true" rows="6" cols="50" id="chatLog"/>
+                            </td>
+                            <td>
+                                Usuarios conectados<br/>
+                                <textarea readonly="true" rows="6" cols="20" id="usuariosConectados" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="text" id="txtUsuarioOrMensaje" name="txtUsuarioOrMensaje" value="" onkeyup="return pressAction(event)" />
+                                <input type="button" id="btnConectar" value="Conectarse" onclick="conectar()" />
+                                <input type="button" id="btnEnviar" value="Enviar" onclick="enviar_mensaje()" style="display: none;"/>
+                                <input type="button" id="btnDesconectar" value="Desconectar" onclick="desconectar()" style="display: none;" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div id="salida"></div>
+                <script language="javascript" type="text/javascript" src="${facesContext.externalContext.requestContextPath}/chat/websocket.js" />
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
